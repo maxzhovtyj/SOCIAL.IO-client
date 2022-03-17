@@ -1,0 +1,15 @@
+.header {
+  /* background-color:goldenrod; */
+  grid-area: h;
+}
+.header img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.list {
+  padding: 16px 0px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

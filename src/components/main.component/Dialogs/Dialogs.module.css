@@ -1,0 +1,39 @@
+.dialogsWrapper{
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+.dialogsList{}
+.dialogsItem{
+    display: flex;
+    justify-content: center;
+}
+
+.messageContent{}
+.message{}
+
+.messageInput {
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    overflow: auto;
+    resize: none;
+    font-size: 14px;
+    line-height: 18px;
+    padding-left: 10px;
+}
+.messageInput:focus-visible {
+    outline: none;
+}
+
+.messageSend{
+    border-radius: 15px;
+    width: 50%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.messageBtn:hover {
+    background-color: white !important;
+}

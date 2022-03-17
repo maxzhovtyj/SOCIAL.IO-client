@@ -1,0 +1,14 @@
+.App {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+  "h h"
+  "s m"
+  "f f";
+    grid-template-rows: 1fr;
+    grid-template-columns: 2fr 14fr;
+    grid-gap: 5px;
+}
+
