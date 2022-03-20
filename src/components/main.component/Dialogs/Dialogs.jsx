@@ -14,10 +14,13 @@ const Dialogs = () => {
     const dialogContent = useSelector(state => state.dialogsPage.dialogContent)
 
     const [newMessage, setNewMessage] = useState()
-
+    const onSetNewMessage = (event) => {
+        setNewMessage(event.target.value)
+    }
     function newMessageSend() {
         let newDialogMessage = {id: Date.now(), messageContent: newMessage}
         dispatch({type: 'ADD_MESSAGE', newDialogMessage})
+        setNewMessage('')
     }
 
     return (
@@ -28,7 +31,7 @@ const Dialogs = () => {
             <div className={classes.messageContent}>
                 {dialogContent.map(message => <Message messageContent={message.messageContent} key={message.id}/>)}
                 <div className={classes.messageSend}>
-                    <textarea value={newMessage} onChange={event => setNewMessage(event.target.value)} className={classes.messageInput} />
+                    <textarea value={newMessage} onChange={onSetNewMessage} className={classes.messageInput} />
                     <Button onClick={newMessageSend} type="button" className={classes.messageBtn} disableRipple endIcon={<SendIcon/>}/>
                 </div>
             </div>
