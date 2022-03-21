@@ -10,8 +10,8 @@ const textAreaStyle = {
     lineHeight: '18px',
 }
 
-const TextArea = () => (
-    <textarea style={textAreaStyle} />
+const TextArea = ({value, onChange}) => (
+    <textarea value={value} onChange={onChange} style={textAreaStyle} />
 );
 
 export default TextArea;

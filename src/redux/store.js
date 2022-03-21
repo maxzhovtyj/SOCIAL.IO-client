@@ -46,11 +46,9 @@ let defaultState = {
 const reducer = (state = defaultState, action) => {
     switch (action.type) {
         case "ADD_POST":
-            // todo new post add
-            break;
+            return {...state, profilePage: {posts: [...state.profilePage.posts, action.newPostSend]}}
         case "ADD_MESSAGE":
-            const newState = {...state, dialogsPage: {dialogContent: [...state.dialogsPage.dialogContent, action.newDialogMessage], dialogsList: [...state.dialogsPage.dialogsList]}}
-            return newState
+            return {...state, dialogsPage: {...state.dialogsPage, dialogContent: [...state.dialogsPage.dialogContent, action.newDialogMessage]}}
         default:
             return state
     }
