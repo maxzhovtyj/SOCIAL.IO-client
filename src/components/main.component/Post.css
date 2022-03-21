@@ -44,7 +44,7 @@
 .post__item-wrapper {
     display: flex;
     align-items: center;
-    margin: 10px 0;
+    margin-bottom: 10px;
 }
 
 .post__item-bottom {

@@ -20,22 +20,31 @@ const Profile = () => {
     }
 
     const sendNewPost = () => {
-        let newPostSend = {
-            id: Date.now(),
-            text: newPost,
-            name: 'Max Zhovtaniuk',
-            likes: 0
+        try {
+            let newPostSend = {
+                id: Date.now(),
+                text: newPost,
+                name: 'Max Zhovtaniuk',
+                likes: 0
+            }
+            if (!newPost.trim()) {
+                throw "Empty post"
+            }
+            dispatch({type: 'ADD_POST', newPostSend})
+            setNewPost('')
+        } catch (error) {
+            console.error(error)
         }
-        dispatch({type: 'ADD_POST', newPostSend})
-        setNewPost('')
     }
 
     return (
         <div className={classes.profileWrapper}>
             <ProfileInfo/>
-            <TextArea value={newPost} onChange={onSetNewPost}/>
-            <Button onClick={sendNewPost} endIcon={<SendIcon/>}>Post</Button>
-            {posts.map(post => <Post key={post.id} postInfo={post}/>)}
+            <div className={classes.inputNewPost}>
+                <TextArea value={newPost} onChange={onSetNewPost}/>
+                <Button onClick={sendNewPost} endIcon={<SendIcon/>}>Post</Button>
+            </div>
+            <div className={classes.postsWrapper}>{posts.map(post => <Post key={post.id} postInfo={post}/>)}</div>
         </div>
 
     )

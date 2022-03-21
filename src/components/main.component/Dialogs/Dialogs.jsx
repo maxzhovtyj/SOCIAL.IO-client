@@ -21,7 +21,7 @@ const Dialogs = () => {
     function newMessageSend() {
         try {
             let newDialogMessage = {id: Date.now(), messageContent: newMessage}
-            if (!newDialogMessage.messageContent) {
+            if (!newMessage.trim()) {
                 throw "Empty message"
             }
             dispatch({type: 'ADD_MESSAGE', newDialogMessage})
@@ -39,7 +39,8 @@ const Dialogs = () => {
             <div className={classes.chatContent}>
                 <div className={classes.messagesWrapper}>
                     <div className={classes.messages}>
-                        {dialogContent.map(message => <Message messageContent={message.messageContent} key={message.id}/>)}
+                        {dialogContent.map(message => <Message messageContent={message.messageContent}
+                                                               key={message.id}/>)}
                     </div>
                 </div>
                 <div className={classes.messageSend}>
