@@ -11,7 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 const Profile = () => {
     const dispatch = useDispatch()
-    const posts = useSelector(state => state.profilePage.posts)
+    const posts = useSelector(state => state.profilePageReducer.posts)
 
     const [newPost, setNewPost] = useState('')
 

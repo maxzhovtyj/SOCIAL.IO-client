@@ -10,8 +10,8 @@ import {useDispatch, useSelector} from "react-redux";
 
 const Dialogs = () => {
     const dispatch = useDispatch()
-    const dialogsList = useSelector(state => state.dialogsPage.dialogsList)
-    const dialogContent = useSelector(state => state.dialogsPage.dialogContent)
+    const dialogsList = useSelector(state => state.dialogsPageReducer.dialogsList)
+    const dialogContent = useSelector(state => state.dialogsPageReducer.dialogContent)
 
     const [newMessage, setNewMessage] = useState()
     const onSetNewMessage = (event) => {
