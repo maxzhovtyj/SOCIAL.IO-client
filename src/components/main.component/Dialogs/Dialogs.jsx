@@ -17,10 +17,18 @@ const Dialogs = () => {
     const onSetNewMessage = (event) => {
         setNewMessage(event.target.value)
     }
+
     function newMessageSend() {
-        let newDialogMessage = {id: Date.now(), messageContent: newMessage}
-        dispatch({type: 'ADD_MESSAGE', newDialogMessage})
-        setNewMessage('')
+        try {
+            let newDialogMessage = {id: Date.now(), messageContent: newMessage}
+            if (!newDialogMessage.messageContent) {
+                throw "Empty message"
+            }
+            dispatch({type: 'ADD_MESSAGE', newDialogMessage})
+            setNewMessage('')
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     return (
@@ -28,11 +36,16 @@ const Dialogs = () => {
             <div className={classes.dialogsList}>
                 {dialogsList.map(user => <DialogItem userName={user.name} id={user.id} key={user.id}/>)}
             </div>
-            <div className={classes.messageContent}>
-                {dialogContent.map(message => <Message messageContent={message.messageContent} key={message.id}/>)}
+            <div className={classes.chatContent}>
+                <div className={classes.messagesWrapper}>
+                    <div className={classes.messages}>
+                        {dialogContent.map(message => <Message messageContent={message.messageContent} key={message.id}/>)}
+                    </div>
+                </div>
                 <div className={classes.messageSend}>
-                    <textarea value={newMessage} onChange={onSetNewMessage} className={classes.messageInput} />
-                    <Button onClick={newMessageSend} type="button" className={classes.messageBtn} disableRipple endIcon={<SendIcon/>}/>
+                    <textarea value={newMessage} onChange={onSetNewMessage} className={classes.messageInput}/>
+                    <Button onClick={newMessageSend} type="button" className={classes.messageBtn} disableRipple
+                            endIcon={<SendIcon/>}/>
                 </div>
             </div>
         </div>
