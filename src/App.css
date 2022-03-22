@@ -10,5 +10,6 @@
     grid-template-rows: 1fr;
     grid-template-columns: 2fr 14fr;
     grid-gap: 5px;
+    padding: 0 15px;
 }
 

@@ -9,8 +9,6 @@ import Dialogs from "./components/main.component/Dialogs/Dialogs";
 import Settings from "./components/main.component/Settings/Settings";
 import Profile from "./components/main.component/Profile/Profile";
 import Friends from "./components/main.component/Friends/Friends";
-import {Provider} from "react-redux";
-import store from "./redux/store";
 
 function App() {
     return (
