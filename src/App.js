@@ -1,30 +1,14 @@
-import {Route, BrowserRouter as Router, Routes} from "react-router-dom";
+import React from 'react'
 
 import "./App.css";
-
-import Header from "./components/header.component/Header";
-import Sidebar from "./components/sidebar.component/Sidebar";
-import News from "./components/main.component/News/News";
-import Dialogs from "./components/main.component/Dialogs/Dialogs";
-import Settings from "./components/main.component/Settings/Settings";
-import Profile from "./components/main.component/Profile/Profile";
-import Friends from "./components/main.component/Friends/Friends";
+import {useRoutes} from "./routes";
 
 function App() {
+    const routes = useRoutes(true)
     return (
-        <Router>
-            <div className="App">
-                <Header/>
-                <Sidebar/>
-                <Routes>
-                    <Route path='/' element={<News/>}/>
-                    <Route path='/dialogs/*' element={<Dialogs/>}/>
-                    <Route path='/friends' element={<Friends/>}/>
-                    <Route path='/profile' element={<Profile/>}/>
-                    <Route path='/settings' element={<Settings/>}/>
-                </Routes>
-            </div>
-        </Router>
+        <div>
+            {routes}
+        </div>
     );
 }
 

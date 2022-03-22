@@ -22,11 +22,6 @@ function Header() {
         <li>
           <NavLink to="/profile">Profile</NavLink>
         </li>
-        <li>
-          <NavLink to="/login" className={s.login}>Sing In</NavLink>
-          <NavLink to="/auth" className={s.auth}>Sing Up</NavLink>
-        </li>
-
       </ul>
     </nav>
   );
