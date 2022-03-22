@@ -25,9 +25,10 @@ const Dialogs = () => {
                 throw "Empty message"
             }
             dispatch({type: 'ADD_MESSAGE', newDialogMessage})
-            setNewMessage('')
         } catch (error) {
             console.error(error)
+        } finally {
+            setNewMessage('')
         }
     }
 

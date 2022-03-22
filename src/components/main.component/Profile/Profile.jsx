@@ -31,9 +31,10 @@ const Profile = () => {
                 throw "Empty post"
             }
             dispatch({type: 'ADD_POST', newPostSend})
-            setNewPost('')
         } catch (error) {
             console.error(error)
+        } finally {
+            setNewPost('')
         }
     }
 

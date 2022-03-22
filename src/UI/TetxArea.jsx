@@ -12,6 +12,7 @@ const textAreaStyle = {
     borderRadius: '15px',
     paddingLeft: '10px',
     border: 'none',
+    whiteSpace: 'pre-wrap'
 }
 
 const TextArea = ({value, onChange}) => (

@@ -14,21 +14,19 @@ import store from "./redux/store";
 
 function App() {
     return (
-        <Provider store={store}>
-            <Router>
-                <div className="App">
-                    <Header/>
-                    <Sidebar/>
-                    <Routes>
-                        <Route path='/' element={<News/>}/>
-                        <Route path='/dialogs/*' element={<Dialogs/>}/>
-                        <Route path='/friends' element={<Friends/>}/>
-                        <Route path='/profile' element={<Profile/>}/>
-                        <Route path='/settings' element={<Settings/>}/>
-                    </Routes>
-                </div>
-            </Router>
-        </Provider>
+        <Router>
+            <div className="App">
+                <Header/>
+                <Sidebar/>
+                <Routes>
+                    <Route path='/' element={<News/>}/>
+                    <Route path='/dialogs/*' element={<Dialogs/>}/>
+                    <Route path='/friends' element={<Friends/>}/>
+                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path='/settings' element={<Settings/>}/>
+                </Routes>
+            </div>
+        </Router>
     );
 }
 
