@@ -1,6 +1,6 @@
 import {NavLink} from "react-router-dom";
 
-function Post({state: {title, text, name, likes}}) {
+function Post({postInfo: {text, name, likes}}) {
     return (
         <div className="post__item-wrapper">
             <img
@@ -13,9 +13,9 @@ function Post({state: {title, text, name, likes}}) {
                     {text}
                 </p>
                 <div className="post__item-bottom">
-          <span className="post__item-username">
-            <NavLink to="/profile">{name}</NavLink>
-          </span>
+                    <span className="post__item-username">
+                        <NavLink to="/profile">{name}</NavLink>
+                    </span>
                     <div className="post__item-likes">
                         <span>{likes}</span>
                         <button>Like</button>

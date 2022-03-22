@@ -10,18 +10,18 @@ import Settings from "./components/main.component/Settings/Settings";
 import Profile from "./components/main.component/Profile/Profile";
 import Friends from "./components/main.component/Friends/Friends";
 
-function App({state}) {
+function App() {
     return (
         <Router>
             <div className="App">
                 <Header/>
                 <Sidebar/>
                 <Routes>
-                    <Route path='/' element={<News/>} />
-                    <Route path='/dialogs/*' element={<Dialogs state={state.dialogsPage}/>} />
+                    <Route path='/' element={<News/>}/>
+                    <Route path='/dialogs/*' element={<Dialogs/>}/>
                     <Route path='/friends' element={<Friends/>}/>
-                    <Route path='/profile' element={<Profile state={state.profilePage} addNewPost={state.addNewPost}/>} />
-                    <Route path='/settings' element={<Settings />} />
+                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path='/settings' element={<Settings/>}/>
                 </Routes>
             </div>
         </Router>

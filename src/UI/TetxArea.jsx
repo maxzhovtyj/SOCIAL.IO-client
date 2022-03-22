@@ -1,17 +1,22 @@
 import React from 'react';
 
 const textAreaStyle = {
+    maxWidth: '72%',
     width: '100%',
-    backgroundColor: 'transparent',
-    border: '0',
+    minHeight: '100px',
+    backgroundColor: 'white',
     overflow: 'auto',
     resize: 'none',
     fontSize: '14px',
     lineHeight: '18px',
+    borderRadius: '15px',
+    paddingLeft: '10px',
+    border: 'none',
+    whiteSpace: 'pre-wrap'
 }
 
-const TextArea = () => (
-    <textarea style={textAreaStyle} />
+const TextArea = ({value, onChange}) => (
+    <textarea value={value} onChange={onChange} style={textAreaStyle} />
 );
 
 export default TextArea;

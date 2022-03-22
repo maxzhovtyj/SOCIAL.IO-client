@@ -1,3 +1,15 @@
-.profileWrapper{
+.profileWrapper {
 
+}
+
+.postsWrapper {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.inputNewPost{
+    margin: .5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
