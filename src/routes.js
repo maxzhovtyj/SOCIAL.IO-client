@@ -1,13 +1,14 @@
 import React from 'react';
-import App from "./App";
+import {Route, Routes} from "react-router-dom";
+
 import Header from "./components/header.component/Header";
 import Sidebar from "./components/sidebar.component/Sidebar";
-import {Route, Routes} from "react-router-dom";
 import News from "./components/main.component/News/News";
 import Dialogs from "./components/main.component/Dialogs/Dialogs";
 import Friends from "./components/main.component/Friends/Friends";
 import Profile from "./components/main.component/Profile/Profile";
 import Settings from "./components/main.component/Settings/Settings";
+import SingIn from "./components/auth.component/SingIn";
 
 export const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
@@ -27,7 +28,7 @@ export const useRoutes = (isAuthenticated) => {
     }
     else {
         return (
-            <h1>Hello World</h1>
+            <SingIn/>
         )
     }
 };

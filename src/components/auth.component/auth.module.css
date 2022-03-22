@@ -1,0 +1,34 @@
+.singInWrapper {
+    height: 100vh;
+    display: flex;
+    padding: 15px;
+}
+
+.singIn {
+    box-sizing: border-box;
+    max-height: 350px;
+    height: 100%;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 15px;
+    margin: auto;
+    padding: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.title {
+    text-align: center;
+    width: 100%;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    width: 70%;
+}
