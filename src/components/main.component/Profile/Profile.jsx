@@ -8,6 +8,7 @@ import {Button} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import TextArea from "../../../UI/TetxArea";
 import {useDispatch, useSelector} from "react-redux";
+import {addPostActionCreator} from "../../../redux/profilePageReducer";
 
 const Profile = () => {
     const dispatch = useDispatch()
@@ -30,7 +31,8 @@ const Profile = () => {
             if (!newPost.trim()) {
                 throw "Empty post"
             }
-            dispatch({type: 'ADD_POST', newPostSend})
+            let newPostAction = addPostActionCreator(newPostSend)
+            dispatch(newPostAction)
         } catch (error) {
             console.error(error)
         } finally {

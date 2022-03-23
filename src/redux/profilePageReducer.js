@@ -17,12 +17,16 @@ let profilePageDefaultState = {
     ]
 }
 
+const ADD_POST = 'ADD_POST'
+
 export const profilePageReducer = (state = profilePageDefaultState, action) => {
     switch (action.type) {
-        case "ADD_POST": {
-            return {...state, posts: [...state.posts, action.newPostSend]}
+        case ADD_POST: {
+            return {...state, posts: [...state.posts, action.body]}
         }
         default:
             return state
     }
 }
+
+export const addPostActionCreator = (body) => ({type: ADD_POST, body})

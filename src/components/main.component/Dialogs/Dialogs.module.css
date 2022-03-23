@@ -1,43 +1,45 @@
-.dialogsWrapper {
+.dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    gap: 5px;
 }
 
 .dialogsList {
-}
-
-.dialogsItem {
-    display: flex;
-    justify-content: center;
-}
-
-.chatContent {
-}
-
-.messagesWrapper {
-    overflow: auto;
-    max-height: 70vh;
-    height: 100%;
-}
-
-.messages {
-    height: 70vh;
-    border-radius: 15px;
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding-left: 5px;
+    overflow: auto;
+}
+
+.dialogsItem {
+    padding: 10px 5px;
+}
+
+.dialogsItem:hover {
+    background-color: whitesmoke;
+}
+
+.dialogsItem:active {
+    background-color: whitesmoke;
+}
+
+.dialogContent {
+}
+
+.dialogWrapper {
+}
+
+.messages {
+    background-color: white;
+    padding: 5px;
 }
 
 .message {
-    display: inline-block;
-    max-width: 40%;
-    padding: 3px;
-    margin: 3px;
-    border-radius: 5px;
-    background-color: #67fdfd;
-    word-wrap: break-word;
+    width: max-content;
+    background-color: whitesmoke;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 15px;
 }
 
 .messageInput {
@@ -56,10 +58,9 @@
     outline: none;
 }
 
-.messageSend {
-    margin-top: .5rem;
+.messageSendArea {
+    margin-top: 5px;
     border-radius: 15px;
-    width: 100%;
     background-color: white;
     display: flex;
     align-items: center;
@@ -67,7 +68,7 @@
 }
 
 @media (max-width: 425px) {
-    .messageSend {
+    .messageSendArea {
         width: 80%;
     }
 }
