@@ -9,6 +9,7 @@ function Sidebar() {
                 <li><NavLink to="/dialogs/*">Dialogs</NavLink></li>
                 <li><NavLink to="/friends">Friends</NavLink></li>
                 <li><NavLink to="/settings">Settings</NavLink></li>
+                <button onClick={() => {localStorage.removeItem('token')}}>Logout</button>
             </ul>
         </nav>
     </div>;
