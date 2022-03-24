@@ -1,5 +1,4 @@
 import "../Post.css";
-import Post from "../Post";
 
 function News() {
   return (

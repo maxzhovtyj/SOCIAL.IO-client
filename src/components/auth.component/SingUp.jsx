@@ -1,6 +1,6 @@
 // todo sing up component
 
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import classes from "./auth.module.css";
 import {Button, TextField} from "@mui/material";
 import {NavLink} from "react-router-dom";

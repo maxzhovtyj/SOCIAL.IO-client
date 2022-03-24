@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 
 import classes from './auth.module.css'
 import {Button, TextField} from "@mui/material";
-import {NavLink, Redirect} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import api from "../../api/auth";
 
 const SingIn = () => {

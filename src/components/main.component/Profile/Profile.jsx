@@ -29,7 +29,7 @@ const Profile = () => {
                 likes: 0
             }
             if (!newPost.trim()) {
-                throw "Empty post"
+                throw new Error("Empty post")
             }
             let newPostAction = addPostActionCreator(newPostSend)
             dispatch(newPostAction)

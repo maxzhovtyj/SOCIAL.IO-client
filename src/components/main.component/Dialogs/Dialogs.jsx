@@ -7,7 +7,6 @@ import SendIcon from '@mui/icons-material/Send';
 
 import classes from './Dialogs.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {BrowserRouter} from "react-router-dom";
 import {sendMessageActionCreator} from "../../../redux/dialogsPageReducer";
 
 const Dialogs = () => {
@@ -23,8 +22,8 @@ const Dialogs = () => {
     function newMessageSend() {
         try {
             let newDialogMessage = {id: Date.now(), messageContent: newMessage}
-            if (!newMessage.trim()) {
-                throw "Empty message"
+            if (!newMessage?.trim()) {
+                throw new Error("Empty message")
             }
             let sendMessageAction = sendMessageActionCreator(newDialogMessage)
             dispatch(sendMessageAction)
