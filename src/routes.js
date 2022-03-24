@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Route, Routes} from "react-router-dom";
 
 import Header from "./components/header.component/Header";
@@ -9,6 +9,7 @@ import Friends from "./components/main.component/Friends/Friends";
 import Profile from "./components/main.component/Profile/Profile";
 import Settings from "./components/main.component/Settings/Settings";
 import SingIn from "./components/auth.component/SingIn";
+import SingUp from "./components/auth.component/SingUp";
 
 export const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
@@ -28,7 +29,10 @@ export const useRoutes = (isAuthenticated) => {
     }
     else {
         return (
-            <SingIn/>
+            <Routes>
+                <Route path="/*" element={<SingIn/>}/>
+                <Route path="/singUp" element={<SingUp/>}/>
+            </Routes>
         )
     }
 };

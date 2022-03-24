@@ -1,32 +1,47 @@
+// todo sing in component
+
 import React, {useState} from 'react';
 
 import classes from './auth.module.css'
 import {Button, TextField} from "@mui/material";
-import {useHttp} from '../../hooks/http.hooks'
+import {NavLink, Redirect} from "react-router-dom";
+import api from "../../api/auth";
 
 const SingIn = () => {
-
-    const {loading, request, error} = useHttp()
-
-    const [form, setForm] = useState({email: '', password: ''})
-
-    const singInHandler = async () => {
+    const [form, setForm] = useState({username: '', password: ''})
+    const fetchLogin = async () => {
         try {
-            const data = await request('/api/auth/register', 'POST', {...form})
-        } catch (e) {}
+            let userData = {
+                username: form.username,
+                password: form.password
+            }
+            const response = await api.post('/auth/login', userData)
+            console.log(response.data)
+            const token = response.data.token
+            localStorage.setItem('token', token)
+        } catch (e) {
+            if (e.res) {
+                console.log(e.response.data)
+                console.log(e.response.status)
+                console.log(e.response.headers)
+            } else {
+                console.log(e.message)
+            }
+        }
     }
     return (
-        <div className={classes.singInWrapper}>
-            <div className={classes.singIn}>
+        <div className={classes.singWrapper}>
+            <div className={classes.sing}>
                 <h1 className={classes.title}>Sing In</h1>
                 <div className={classes.inputs}>
-                    <TextField value={form.email} onChange={event => setForm({...form, email: event.target.value})}
+                    <TextField value={form.username} onChange={event => setForm({...form, username: event.target.value})}
                                size="normal" margin={"dense"} label="Email" fullWidth style={{marginBottom: '10px'}}/>
                     <TextField value={form.password}
                                onChange={event => setForm({...form, password: event.target.value})} size="normal"
                                margin={"dense"} label="Password" fullWidth/>
+                    <span className={classes.goTo}>Don't have an account yet? <NavLink to="/singUp">Sing Up</NavLink></span>
                 </div>
-                <Button onClick={singInHandler} disabled={loading} variant="contained" size="medium">Sing In</Button>
+                <Button onClick={fetchLogin} variant="contained" size="medium">Sing In</Button>
             </div>
         </div>
     );

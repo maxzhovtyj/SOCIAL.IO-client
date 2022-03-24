@@ -1,10 +1,10 @@
-.singInWrapper {
+.singWrapper {
     height: 100vh;
     display: flex;
     padding: 15px;
 }
 
-.singIn {
+.sing {
     box-sizing: border-box;
     max-height: 350px;
     height: 100%;
@@ -12,7 +12,7 @@
     width: 100%;
     border-radius: 15px;
     margin: auto;
-    padding: 10px;
+    padding: 20px;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -31,4 +31,8 @@
     justify-content: space-around;
     align-items: flex-start;
     width: 70%;
+}
+
+.goTo {
+    margin: 7px 0;
 }
