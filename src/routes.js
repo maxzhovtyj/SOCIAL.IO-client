@@ -1,15 +1,15 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
 
-import Header from "./components/header.component/Header";
-import Sidebar from "./components/sidebar.component/Sidebar";
-import News from "./components/main.component/News/News";
-import Dialogs from "./components/main.component/Dialogs/Dialogs";
-import Friends from "./components/main.component/Friends/Friends";
-import Profile from "./components/main.component/Profile/Profile";
-import Settings from "./components/main.component/Settings/Settings";
-import SingIn from "./components/auth.component/SingIn";
-import SingUp from "./components/auth.component/SingUp";
+import Header from "./components/header/Header";
+import Sidebar from "./components/sidebar/Sidebar";
+import News from "./components/main/News/News";
+import Dialogs from "./components/main/Dialogs/Dialogs";
+import Friends from "./components/main/Friends/Friends";
+import Profile from "./components/main/Profile/Profile";
+import Settings from "./components/main/Settings/Settings";
+import SingIn from "./components/auth/SingIn";
+import SingUp from "./components/auth/SingUp";
 
 export const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {

@@ -2,13 +2,13 @@
     background-color: white;
     border-radius: 15px;
     grid-area: s;
+    height: 70vh;
 }
 .sidebar > nav {
     height: 100%;
 }
 
 .sidebar-list {
-    min-height: 230px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -16,6 +16,4 @@
     justify-content: space-around;
 }
 
-.sidebar-list > li {
-    margin-bottom: 50px;
-}
+.sidebar-list > li {}

@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
     gap: 5px;
+    height: 70vh;
 }
 
 .dialogsList {
@@ -27,15 +28,27 @@
 }
 
 .dialogWrapper {
+    position: relative;
+    height: 100%;
 }
 
 .messages {
+    overflow: auto;
     background-color: white;
     padding: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .message {
     width: max-content;
+    max-width: 40%;
     background-color: whitesmoke;
     padding: 5px 10px;
     margin: 5px;
@@ -59,7 +72,10 @@
 }
 
 .messageSendArea {
-    margin-top: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     border-radius: 15px;
     background-color: white;
     display: flex;
