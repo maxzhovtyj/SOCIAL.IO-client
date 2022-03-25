@@ -50,6 +50,12 @@
 .post__item-bottom {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.post__item-likes{
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 375px) {

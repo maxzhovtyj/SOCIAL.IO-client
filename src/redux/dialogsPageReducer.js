@@ -1,5 +1,3 @@
-import {useHttp} from "../hooks/http.hook";
-
 let dialogsPageDefaultState = {
     dialogsList: [
         {id: '1', name: 'Max'},

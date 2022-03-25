@@ -1,15 +1,24 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-areas:
+    "search messages messages"
+    "sidebar messages messages"
+    "sidebar input input";
     gap: 5px;
-    height: 70vh;
+    max-height: 70vh;
+    height: 100%;
 }
 
 .dialogsList {
+    grid-area: sidebar;
     background-color: white;
     display: flex;
     flex-direction: column;
     overflow: auto;
+}
+
+.dialogsListSearch {
+    grid-area: search;
 }
 
 .dialogsItem {
@@ -33,17 +42,15 @@
 }
 
 .messages {
+    grid-area: messages;
     overflow: auto;
     background-color: white;
     padding: 5px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 38px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+}
+
+.messagesWrapper {
 }
 
 .message {
@@ -72,10 +79,7 @@
 }
 
 .messageSendArea {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    grid-area: input;
     border-radius: 15px;
     background-color: white;
     display: flex;

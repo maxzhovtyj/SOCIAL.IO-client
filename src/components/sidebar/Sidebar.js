@@ -1,6 +1,5 @@
 import "./Sidebar.css"
 import {NavLink} from "react-router-dom";
-import {useAuth} from "../../hooks/auth.hook";
 import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext";
 import {Button} from "@mui/material";
