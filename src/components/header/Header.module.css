@@ -1,9 +1,10 @@
 .header {
   grid-area: h;
 }
-.header img {
-  max-width: 50px;
-  max-height: 50px;
+
+.logo {
+  font-size: 36px;
+  font-weight: 700;
 }
 
 .list {

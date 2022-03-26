@@ -1,33 +1,48 @@
-// todo sing up component
-
 import React, {useState} from 'react';
 import classes from "./auth.module.css";
-import {Button, TextField} from "@mui/material";
+import {Button, IconButton, Snackbar, TextField} from "@mui/material";
 import {NavLink} from "react-router-dom";
-import api from '../../api/auth'
+import {useHttp} from "../../hooks/http.hook";
+import CloseIcon from '@mui/icons-material/Close';
 
 
 const SingUp = () => {
+    const {loading, error, request, clearError} = useHttp()
     const [singUpForm, setSingUpForm] = useState({username: '', password: '', validPassword: ''})
-    const fetchRegistration = async () => {
+
+    const [open, setOpen] = useState(false);
+    const handleClick = () => {
+        setOpen(true);
+    };
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setOpen(false);
+    };
+    const action = (
+        <React.Fragment>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+            >
+                <CloseIcon fontSize="small"/>
+            </IconButton>
+        </React.Fragment>
+    );
+
+    const registrationHandler = async () => {
         try {
             if (singUpForm.password !== singUpForm.validPassword) {
-                throw new Error('Passwords do not match, try again')
+                throw new Error("Password do not match try again")
             }
-            let userData = {
-                username: singUpForm.username,
-                password: singUpForm.password
-            }
-            const response = await api.post('/auth/registration', userData)
-            console.log(response.data)
+            let userData = {username: singUpForm.username, password: singUpForm.password}
+            const response = await request('/auth/registration', 'POST', userData)
+            console.log(response)
         } catch (e) {
-            if (e.res) {
-                console.log(e.response.data)
-                console.log(e.response.status)
-                console.log(e.response.headers)
-            } else {
-                console.log(e.message)
-            }
+            handleClick()
         }
     }
     return (
@@ -48,7 +63,14 @@ const SingUp = () => {
                                margin={"dense"} label="Repeat password" fullWidth/>
                     <span className={classes.goTo}>Already have account? <NavLink to="/">Sing In</NavLink></span>
                 </div>
-                <Button onClick={fetchRegistration} variant="contained" size="medium">Sing In</Button>
+                <Button onClick={registrationHandler} disabled={loading} variant="contained" size="medium">Sing In</Button>
+                <Snackbar
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                    message={error}
+                    action={action}
+                />
             </div>
         </div>
     );

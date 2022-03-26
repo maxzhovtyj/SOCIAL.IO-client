@@ -5,12 +5,9 @@ function Header() {
   return (
     <nav className={s.header}>
       <ul className={s.list}>
-        <li>
+        <li className={s.logo}>
           <NavLink to="/">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Adidas_Logo.svg/2560px-Adidas_Logo.svg.png"
-              alt="logo"
-            />
+            Social.io
           </NavLink>
         </li>
         <li>

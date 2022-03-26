@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {Button} from "@mui/material";
+import {Button, TextField} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 
 import classes from './Dialogs.module.css'
@@ -36,22 +36,23 @@ const Dialogs = () => {
 
     return (
         <section className={classes.dialogs}>
+            <TextField className={classes.dialogsListSearch} size={"small"} label="Search" variant={"filled"}/>
+
             <ul className={classes.dialogsList}>
                 {dialogsList.map(user => <DialogItem userName={user.name} id={user.id} key={user.id}/>)}
             </ul>
-            <div className={classes.dialogContent}>
-                <div className={classes.dialogWrapper}>
-                    <div className={classes.messages}>
-                        {dialogContent.map(message => <Message messageContent={message.messageContent}
-                                                               key={message.id}/>)}
-                    </div>
-                    <div className={classes.messageSendArea}>
-                        <textarea value={newMessage} onChange={onSetNewMessage} className={classes.messageInput}/>
-                        <Button onClick={newMessageSend} type="button" className={classes.messageBtn} disableRipple
-                                endIcon={<SendIcon/>}/>
-                    </div>
-                </div>
+
+            <div className={classes.messages}>
+                {dialogContent.map(message => <Message messageContent={message.messageContent}
+                                                       key={message.id}/>)}
             </div>
+
+            <div className={classes.messageSendArea}>
+                <textarea value={newMessage} onChange={onSetNewMessage} className={classes.messageInput}/>
+                <Button onClick={newMessageSend} type="button" className={classes.messageBtn} disableRipple
+                        endIcon={<SendIcon/>}/>
+            </div>
+
         </section>
     )
 };

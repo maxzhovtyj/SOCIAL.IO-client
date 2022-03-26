@@ -2,9 +2,9 @@ import React from 'react';
 import classes from "../Dialogs.module.css";
 
 const Message = ({messageContent}) => (
-    <p className={classes.message}>
-        {messageContent}
-    </p>
+    <div className={classes.message}>
+        <p>{messageContent}</p>
+    </div>
 )
 
 export default Message;

@@ -25,11 +25,15 @@ let dialogsPageDefaultState = {
 }
 
 const SEND_MESSAGE = 'SEND_MESSAGE'
+const GET_USERS = 'GET_USERS'
 
 export const dialogsPageReducer = (state = dialogsPageDefaultState, action) => {
+
     switch (action.type) {
         case SEND_MESSAGE:
             return {...state, dialogContent: [...state.dialogContent, action.body]}
+        case GET_USERS:
+            return {}
         default:
             return state;
     }

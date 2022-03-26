@@ -45,7 +45,7 @@ const Profile = () => {
             <ProfileInfo/>
             <div className={classes.inputNewPost}>
                 <TextArea value={newPost} onChange={onSetNewPost}/>
-                <Button onClick={sendNewPost} endIcon={<SendIcon/>}>Post</Button>
+                <Button onClick={sendNewPost} style={{marginTop: ".5rem"}} endIcon={<SendIcon/>}>Post</Button>
             </div>
             <div className={classes.postsWrapper}>{posts.map(post => <Post key={post.id} postInfo={post}/>)}</div>
         </div>

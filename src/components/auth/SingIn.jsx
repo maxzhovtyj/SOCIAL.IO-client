@@ -1,32 +1,25 @@
 // todo sing in component
 
-import React, {useState} from 'react';
+import  React, {useContext, useState} from 'react';
 
 import classes from './auth.module.css'
 import {Button, TextField} from "@mui/material";
 import {NavLink} from "react-router-dom";
-import api from "../../api/auth";
+import {AuthContext} from "../../context/AuthContext";
+import {useHttp} from "../../hooks/http.hook";
 
 const SingIn = () => {
+    const auth = useContext(AuthContext)
+    const {loading, error, request, clearError} = useHttp()
     const [form, setForm] = useState({username: '', password: ''})
-    const fetchLogin = async () => {
+
+    const loginHandler = async () => {
         try {
-            let userData = {
-                username: form.username,
-                password: form.password
-            }
-            const response = await api.post('/auth/login', userData)
-            console.log(response.data)
-            const token = response.data.token
-            localStorage.setItem('token', token)
+            let userData = {username: form.username, password: form.password}
+            const data = await request('/auth/login', 'POST', userData)
+            auth.login(data.token, data.id)
         } catch (e) {
-            if (e.res) {
-                console.log(e.response.data)
-                console.log(e.response.status)
-                console.log(e.response.headers)
-            } else {
-                console.log(e.message)
-            }
+            console.log(e)
         }
     }
     return (
@@ -41,7 +34,7 @@ const SingIn = () => {
                                margin={"dense"} label="Password" fullWidth/>
                     <span className={classes.goTo}>Don't have an account yet? <NavLink to="/singUp">Sing Up</NavLink></span>
                 </div>
-                <Button onClick={fetchLogin} variant="contained" size="medium">Sing In</Button>
+                <Button onClick={loginHandler} disabled={loading} variant="contained" size="medium">Sing In</Button>
             </div>
         </div>
     );
