@@ -19,7 +19,7 @@ export const useRoutes = (isAuthenticated) => {
                 <Sidebar/>
                 <Routes>
                     <Route path='/' element={<News/>}/>
-                    <Route path='/dialogs/*' element={<Dialogs/>}/>
+                    <Route path='/dialogs' element={<Dialogs/>}/>
                     <Route path='/friends' element={<Friends/>}/>
                     <Route path='/profile' element={<Profile/>}/>
                     <Route path='/settings' element={<Settings/>}/>
@@ -30,7 +30,7 @@ export const useRoutes = (isAuthenticated) => {
     else {
         return (
             <Routes>
-                <Route path="/*" element={<SingIn/>}/>
+                <Route path="/" element={<SingIn/>}/>
                 <Route path="/singUp" element={<SingUp/>}/>
             </Routes>
         )

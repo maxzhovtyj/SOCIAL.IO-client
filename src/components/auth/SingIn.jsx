@@ -1,24 +1,29 @@
-// todo sing in component
-
 import  React, {useContext, useState} from 'react';
 
-import classes from './auth.module.css'
-import {Button, TextField} from "@mui/material";
-import {NavLink} from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import {useHttp} from "../../hooks/http.hook";
+import {NavLink} from "react-router-dom";
+
+import {Button, TextField} from "@mui/material";
+import classes from './auth.module.css'
+import SimpleSnackbar from "../../UI/Snackbar";
+
 
 const SingIn = () => {
     const auth = useContext(AuthContext)
-    const {loading, error, request, clearError} = useHttp()
-    const [form, setForm] = useState({username: '', password: ''})
 
+    const [openSnackBar, setOpenSnackBar] = useState(false)
+
+    const {loading, error, request, clearError} = useHttp()
+
+    const [form, setForm] = useState({username: '', password: ''})
     const loginHandler = async () => {
         try {
             let userData = {username: form.username, password: form.password}
             const data = await request('/auth/login', 'POST', userData)
             auth.login(data.token, data.id)
         } catch (e) {
+            setOpenSnackBar(true)
             console.log(e)
         }
     }
@@ -35,6 +40,7 @@ const SingIn = () => {
                     <span className={classes.goTo}>Don't have an account yet? <NavLink to="/singUp">Sing Up</NavLink></span>
                 </div>
                 <Button onClick={loginHandler} disabled={loading} variant="contained" size="medium">Sing In</Button>
+                <SimpleSnackbar open={openSnackBar} setOpen={setOpenSnackBar} errorMessage={error}/>
             </div>
         </div>
     );

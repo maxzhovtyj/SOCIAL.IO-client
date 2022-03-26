@@ -1,38 +1,21 @@
 import React, {useState} from 'react';
-import classes from "./auth.module.css";
-import {Button, IconButton, Snackbar, TextField} from "@mui/material";
-import {NavLink} from "react-router-dom";
+
+import {NavLink, useNavigate} from "react-router-dom";
 import {useHttp} from "../../hooks/http.hook";
-import CloseIcon from '@mui/icons-material/Close';
+
+import classes from "./auth.module.css";
+import {Button, TextField} from "@mui/material";
+import SimpleSnackbar from "../../UI/Snackbar";
 
 
 const SingUp = () => {
+    const [openSnackBar, setOpenSnackBar] = useState(false);
+
+    const navigate = useNavigate()
+
     const {loading, error, request, clearError} = useHttp()
+
     const [singUpForm, setSingUpForm] = useState({username: '', password: '', validPassword: ''})
-
-    const [open, setOpen] = useState(false);
-    const handleClick = () => {
-        setOpen(true);
-    };
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setOpen(false);
-    };
-    const action = (
-        <React.Fragment>
-            <IconButton
-                size="small"
-                aria-label="close"
-                color="inherit"
-                onClick={handleClose}
-            >
-                <CloseIcon fontSize="small"/>
-            </IconButton>
-        </React.Fragment>
-    );
-
     const registrationHandler = async () => {
         try {
             if (singUpForm.password !== singUpForm.validPassword) {
@@ -40,11 +23,13 @@ const SingUp = () => {
             }
             let userData = {username: singUpForm.username, password: singUpForm.password}
             const response = await request('/auth/registration', 'POST', userData)
+            navigate("/")
             console.log(response)
         } catch (e) {
-            handleClick()
+            setOpenSnackBar(true)
         }
     }
+
     return (
         <div className={classes.singWrapper}>
             <div className={classes.sing}>
@@ -64,13 +49,7 @@ const SingUp = () => {
                     <span className={classes.goTo}>Already have account? <NavLink to="/">Sing In</NavLink></span>
                 </div>
                 <Button onClick={registrationHandler} disabled={loading} variant="contained" size="medium">Sing In</Button>
-                <Snackbar
-                    open={open}
-                    autoHideDuration={6000}
-                    onClose={handleClose}
-                    message={error}
-                    action={action}
-                />
+                <SimpleSnackbar open={openSnackBar} setOpen={setOpenSnackBar} errorMessage={error}/>
             </div>
         </div>
     );
