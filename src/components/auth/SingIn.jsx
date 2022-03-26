@@ -35,7 +35,7 @@ const SingIn = () => {
                     <TextField value={form.username} onChange={event => setForm({...form, username: event.target.value})}
                                size="normal" margin={"dense"} label="Email" fullWidth style={{marginBottom: '10px'}}/>
                     <TextField value={form.password}
-                               onChange={event => setForm({...form, password: event.target.value})} size="normal"
+                               onChange={event => setForm({...form, password: event.target.value})} type={"password"} size="normal"
                                margin={"dense"} label="Password" fullWidth/>
                     <span className={classes.goTo}>Don't have an account yet? <NavLink to="/singUp">Sing Up</NavLink></span>
                 </div>

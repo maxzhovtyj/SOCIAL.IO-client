@@ -40,9 +40,11 @@ const SingUp = () => {
                                size="normal" margin={"dense"} label="Email" fullWidth style={{marginBottom: '10px'}}/>
                     <TextField value={singUpForm.password}
                                onChange={event => setSingUpForm({...singUpForm, password: event.target.value})}
+                               type={"password"}
                                size="normal"
                                margin={"dense"} label="Password" fullWidth/>
                     <TextField value={singUpForm.validPassword}
+                               type={"password"}
                                onChange={event => setSingUpForm({...singUpForm, validPassword: event.target.value})}
                                size="normal"
                                margin={"dense"} label="Repeat password" fullWidth/>
