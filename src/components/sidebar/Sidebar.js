@@ -4,6 +4,8 @@ import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext";
 import {Button} from "@mui/material";
 
+import SettingsIcon from '@mui/icons-material/Settings';
+
 function Sidebar() {
     const auth = useContext(AuthContext)
     const navigate = useNavigate()

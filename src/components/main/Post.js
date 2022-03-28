@@ -1,6 +1,8 @@
 import {NavLink} from "react-router-dom";
 import {Avatar, Button} from "@mui/material";
-import {useState} from "react";
+import React, {useState} from "react";
+import IconButton from "@mui/material/IconButton";
+import {FavoriteBorderOutlined} from "@mui/icons-material";
 
 function Post({postInfo: {text, name, likes}}) {
     const [postLikes, setPostLikes] = useState(likes)
@@ -26,8 +28,10 @@ function Post({postInfo: {text, name, likes}}) {
                 <div className="post__item-bottom">
                     <NavLink to="/profile" className="post__item-username">{name}</NavLink>
                     <div className="post__item-likes">
-                        <span style={{marginRight: ".5rem"}}>{postLikes}</span>
-                        <Button onClick={handler} variant="text" size={"small"}>Like</Button>
+                        <span>{postLikes}</span>
+                        <IconButton onClick={handler} size={"small"}>
+                            <FavoriteBorderOutlined/>
+                        </IconButton>
                     </div>
                 </div>
             </div>

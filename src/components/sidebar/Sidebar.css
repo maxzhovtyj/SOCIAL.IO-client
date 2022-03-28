@@ -17,3 +17,9 @@
 }
 
 .sidebar-list > li {}
+
+@media (max-width: 375px) {
+    .sidebar {
+        display: none;
+    }
+}

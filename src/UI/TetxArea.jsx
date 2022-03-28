@@ -1,7 +1,8 @@
 import React from 'react';
 
 const textAreaStyle = {
-    maxWidth: '72%',
+    boxSizing: 'border-box',
+    padding: '5px',
     width: '100%',
     minHeight: '100px',
     backgroundColor: 'white',
