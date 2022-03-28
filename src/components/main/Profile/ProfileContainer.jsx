@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 
 import {useDispatch, useSelector} from "react-redux";
 import {addPostActionCreator} from "../../../redux/profilePageReducer";
@@ -8,14 +8,19 @@ import {useParams} from "react-router-dom";
 
 import Profile from "./Profile";
 import ProfileSkeleton from "./ProfileSkeleton";
+import {AuthContext} from "../../../context/AuthContext";
 
 const ProfileContainer = () => {
+    const auth = useContext(AuthContext)
     const {request, loading} = useHttp()
     const params = useParams()
 
     const dispatch = useDispatch()
-    const posts = useSelector(state => state.profilePageReducer.posts)
+    const posts = useSelector(state => state.profilePageReducer.userPosts)
 
+    const [userPosts, setUserPosts] = useState(posts)
+
+    const [isOwner, setIsOwner] = useState(false)
     const [userInfo, setUserInfo] = useState({})
     const [newPost, setNewPost] = useState('')
     const [responseStatus, setResponseStatus] = useState(null)
@@ -42,9 +47,16 @@ const ProfileContainer = () => {
     }
 
     useEffect(() => {
+        if (params.id === auth.userId) {
+            setIsOwner(true)
+        }
+        else setIsOwner(false)
+
         async function fetchData() {
             try {
                 const response = await request(`/auth/userInfo?id=${params.id}`)
+                const userPostsResponse = await request(`/auth/userPosts?id=${params.id}`)
+                setUserPosts(userPostsResponse)
                 setUserInfo(response)
                 setResponseStatus('ok')
             } catch (e) {
@@ -54,14 +66,14 @@ const ProfileContainer = () => {
         }
 
         fetchData()
-    }, [params.id])
+    }, [params.id, isOwner])
 
     if (loading) {
         return <ProfileSkeleton/>
     }
 
     else if (responseStatus && !loading) {
-        return <Profile profileInfo={userInfo} newPost={newPost} onSetNewPost={onSetNewPost} sendNewPost={sendNewPost} posts={posts}/>
+        return <Profile isOwner={isOwner} profileInfo={userInfo} newPost={newPost} isOwner={isOwner} onSetNewPost={onSetNewPost} sendNewPost={sendNewPost} posts={userPosts}/>
     }
     else {
         return "User was not found"

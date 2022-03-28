@@ -8,17 +8,21 @@ import {Button} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import TextArea from "../../../UI/TetxArea";
 
-const Profile = ({profileInfo, newPost, onSetNewPost, sendNewPost, posts}) => {
+const Profile = ({isOwner, profileInfo, newPost, onSetNewPost, sendNewPost, posts}) => {
     return (
         <div className={classes.profileWrapper}>
             <ProfileInfo profileInfo={profileInfo}/>
-            <div className={classes.inputNewPost}>
+            {
+                isOwner
+                ?
+                <div className={classes.inputNewPost}>
                 <TextArea value={newPost} onChange={onSetNewPost}/>
                 <Button onClick={sendNewPost} style={{marginTop: ".5rem"}} endIcon={<SendIcon/>}>Post</Button>
-            </div>
-            <div className={classes.postsWrapper}>{posts.map(post => <Post key={post.id} postInfo={post}/>)}</div>
+                </div>
+                : ''
+            }
+            {!posts.isEmpty ? <div className={classes.postsWrapper}>{posts.map((post, index) => <Post key={index} postInfo={post}/>)}</div> : "This user has not posts yet"}
         </div>
-
     )
 }
 
