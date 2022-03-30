@@ -1,15 +1,15 @@
 import React from 'react';
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useParams} from "react-router-dom";
 
 import Header from "./components/header/Header";
 import Sidebar from "./components/sidebar/Sidebar";
 import News from "./components/main/News/News";
 import Dialogs from "./components/main/Dialogs/Dialogs";
 import Friends from "./components/main/Friends/Friends";
-import Profile from "./components/main/Profile/Profile";
 import Settings from "./components/main/Settings/Settings";
 import SingIn from "./components/auth/SingIn";
 import SingUp from "./components/auth/SingUp";
+import ProfileContainer from "./components/main/Profile/ProfileContainer";
 
 export const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
@@ -21,7 +21,7 @@ export const useRoutes = (isAuthenticated) => {
                     <Route path='/' element={<News/>}/>
                     <Route path='/dialogs' element={<Dialogs/>}/>
                     <Route path='/friends' element={<Friends/>}/>
-                    <Route path='/profile' element={<Profile/>}/>
+                    <Route path='/profile/:id' element={<ProfileContainer/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                 </Routes>
             </div>

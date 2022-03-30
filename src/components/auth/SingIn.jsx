@@ -21,7 +21,7 @@ const SingIn = () => {
         try {
             let userData = {username: form.username, password: form.password}
             const data = await request('/auth/login', 'POST', userData)
-            auth.login(data.token, data.id)
+            auth.login(data.token, data.userId)
         } catch (e) {
             setOpenSnackBar(true)
             console.log(e)
