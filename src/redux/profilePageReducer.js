@@ -1,32 +1,54 @@
+import axios from "axios";
+
 let profilePageDefaultState = {
-    posts: [
-        {
-            id: 0,
-            text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-            name: 'Max Zhovtaniuk',
-            likes: 10
-        },
-        {
-            id: 1,
-            text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-            name: 'Max Zhovtaniuk',
-            likes: 15
-        },
-        {id: 2, text: "Fuck it", name: "Max Zhovtaniuk", likes: 5},
-        {id: 3, text: "yo", name: "Max Zhovtaniuk", likes: 0}
-    ]
+    userInfo: {},
+    userPosts: []
 }
 
-const ADD_POST = 'ADD_POST'
+const ADD_NEW_POST = "ADD_POST"
+const GET_USER_POSTS = "GET_USER_POSTS"
+const GET_USER_INFO = "GET_USER_INFO"
 
 export const profilePageReducer = (state = profilePageDefaultState, action) => {
     switch (action.type) {
-        case ADD_POST: {
-            return {...state, posts: [...state.posts, action.body]}
+        case ADD_NEW_POST: {
+            return {...state, userPosts: [...state.userPosts, action.payload]}
+        }
+        case GET_USER_POSTS: {
+            return {...state, userPosts: [...action.payload]}
+        }
+        case GET_USER_INFO: {
+            return {...state, userInfo: {...action.payload}}
         }
         default:
             return state
     }
 }
 
-export const addPostActionCreator = (body) => ({type: ADD_POST, body})
+export const addNewPostActionCreator = (payload) => ({type: ADD_NEW_POST, payload})
+export const getUserPostsActionCreator = (payload) => ({type: GET_USER_POSTS, payload})
+export const getUserInfoActionCreator = (payload) => ({type: GET_USER_INFO, payload})
+
+export const fetchUserInfo = (userIdParam) => {
+    return async (dispatch) => {
+        const response = await axios.get(`/auth/userInfo?id=${userIdParam}`)
+        console.log(response.data)
+        dispatch(getUserInfoActionCreator(response.data))
+    }
+}
+
+export const fetchUserPosts = (userIdParam) => {
+    return async (dispatch) => {
+        const response = await axios.get(`/auth/userPosts?id=${userIdParam}`)
+        console.log(response.data)
+        dispatch(getUserPostsActionCreator(response.data))
+    }
+}
+
+export const fetchNewUserPost = (data) => {
+    return async (dispatch) => {
+        const response = await axios.post('/auth/newPost', data)
+        console.log(response.data)
+        dispatch(addNewPostActionCreator(data))
+    }
+}
