@@ -2,11 +2,6 @@
     width: 70vw;
 }
 
-.postsWrapper {
-    display: flex;
-    flex-direction: column-reverse;
-}
-
 .inputNewPost{
     margin: .5rem 0;
     display: flex;
