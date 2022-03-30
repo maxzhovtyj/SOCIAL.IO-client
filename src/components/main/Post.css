@@ -25,6 +25,8 @@
 }
 
 .post__item-text {
+    max-width: max-content;
+    white-space: pre-wrap;
 }
 
 .post__item:last-child {

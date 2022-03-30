@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 import {AuthContext} from "../../../context/AuthContext";
 import {
     fetchNewUserPost, fetchUserInfo, fetchUserPosts
-} from "../../../redux/profilePageReducer";
+} from "../../../redux/asyncFetch";
 
 
 const ProfileContainer = () => {
@@ -32,9 +32,13 @@ const ProfileContainer = () => {
     }
 
     useEffect(() => {
-        dispatch(fetchUserInfo(params.id))
-        dispatch(fetchUserPosts(params.id))
-        setUserIsProfileOwner(params.id === auth.userId)
+        try {
+            dispatch(fetchUserInfo(params.id))
+            dispatch(fetchUserPosts(params.id))
+            setUserIsProfileOwner(params.id === auth.userId)
+        } catch (e) {
+            console.log(e)
+        }
     }, [auth.userId, dispatch, params.id])
     return (
         <Profile isOwner={userIsProfileOwner}
