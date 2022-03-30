@@ -4,19 +4,8 @@ import React, {useState} from "react";
 import IconButton from "@mui/material/IconButton";
 import {FavoriteBorderOutlined} from "@mui/icons-material";
 
-function Post({postInfo: {text, name, likes}}) {
-    const [postLikes, setPostLikes] = useState(likes)
-    const [likeToggle, setLikeToggle] = useState(false)
+function Post({postInfo: {authorId, authorName, text, likes}}) {
 
-    const handler = () => {
-        if (likeToggle === false) {
-            setPostLikes(prevState => prevState + 1)
-            setLikeToggle(true)
-        } else {
-            setPostLikes(prevState => prevState - 1)
-            setLikeToggle(false)
-        }
-    }
     return (
         <div className="post__item-wrapper">
             <Avatar className="post__user-img" sx={{width: 56, height: 56}} alt="userImg"
@@ -26,10 +15,10 @@ function Post({postInfo: {text, name, likes}}) {
                     {text}
                 </p>
                 <div className="post__item-bottom">
-                    <NavLink to="/profile" className="post__item-username">{name}</NavLink>
+                    <NavLink to={`/profile/${authorId}`} className="post__item-username">{authorName}</NavLink>
                     <div className="post__item-likes">
-                        <span>{postLikes}</span>
-                        <IconButton onClick={handler} size={"small"}>
+                        <span>{likes}</span>
+                        <IconButton size={"small"}>
                             <FavoriteBorderOutlined/>
                         </IconButton>
                     </div>

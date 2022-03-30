@@ -11,8 +11,8 @@ import {sendMessageActionCreator} from "../../../redux/dialogsPageReducer";
 
 const Dialogs = () => {
     const dispatch = useDispatch()
-    const dialogsList = useSelector(state => state.dialogsPageReducer.dialogsList)
-    const dialogContent = useSelector(state => state.dialogsPageReducer.dialogContent)
+    const dialogsList = useSelector(state => state.dialogs.dialogsList)
+    const dialogContent = useSelector(state => state.dialogs.dialogContent)
 
     const [newMessage, setNewMessage] = useState()
     const onSetNewMessage = (event) => {
