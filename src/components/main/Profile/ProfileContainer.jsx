@@ -1,9 +1,9 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 
 import {useDispatch, useSelector} from "react-redux";
 import {addPostActionCreator} from "../../../redux/profilePageReducer";
 
-import {useParams} from "react-router-dom";
+// import {useParams} from "react-router-dom";
 
 import Profile from "./Profile";
 import ProfileSkeleton from "./ProfileSkeleton";
@@ -11,7 +11,8 @@ import {AuthContext} from "../../../context/AuthContext";
 
 const ProfileContainer = () => {
     const auth = useContext(AuthContext)
-    const params = useParams()
+
+    //const params = useParams()
 
     const dispatch = useDispatch()
     const posts = useSelector(state => state.profilePageReducer.userPosts)
@@ -45,23 +46,6 @@ const ProfileContainer = () => {
             setNewPostText('')
         }
     }
-
-    useEffect(() => {
-        if (params.id === auth.userId) {
-            setIsOwner(true)
-        } else setIsOwner(false)
-
-        async function fetchData() {
-            try {
-                setResponseStatus('ok')
-            } catch (e) {
-                setResponseStatus(null)
-                console.log(e)
-            }
-        }
-
-        fetchData()
-    }, [params.id, isOwner])
 
     if (false) return <ProfileSkeleton/>
     else if (responseStatus) {
