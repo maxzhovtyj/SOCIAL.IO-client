@@ -20,7 +20,7 @@ export const useRoutes = (isAuthenticated) => {
                 <Routes>
                     <Route path='/' element={<News/>}/>
                     <Route path='/dialogs' element={<Dialogs/>}/>
-                    <Route path='/friends' element={<Friends/>}/>
+                    <Route path='/friends/*' element={<Friends/>}/>
                     <Route path='/profile/:id' element={<ProfileContainer/>}/>
                     <Route path='/settings' element={<Settings/>}/>
                 </Routes>
