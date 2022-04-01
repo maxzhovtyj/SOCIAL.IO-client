@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import {NavLink, Route, Routes} from "react-router-dom";
 
@@ -7,23 +7,25 @@ import FriendshipRequests from "./FriendshipRequests";
 import UsersList from "./UsersList";
 
 import classes from './Friends.module.css'
+import {AuthContext} from "../../../context/AuthContext";
 
 const Friends = (props) => {
+    const auth = useContext(AuthContext)
     return (
         <div>
             <nav className={classes.navWrapper}>
                 <ul>
-                    <li><NavLink to="">Friends |</NavLink></li>
+                    <li><NavLink to={``}>Friends |</NavLink></li>
                 </ul>
                 <ul>
-                    <li><NavLink to="requests">Friendship requests |</NavLink></li>
+                    <li><NavLink to={`requests`}>Friendship requests |</NavLink></li>
                 </ul>
                 <ul>
-                    <li><NavLink to="users">Users</NavLink></li>
+                    <li><NavLink to={`users`}>Users</NavLink></li>
                 </ul>
             </nav>
             <Routes>
-                <Route path='/' element={<FriendsList/>}/>
+                <Route path='' element={<FriendsList/>}/>
                 <Route path='requests' element={<FriendshipRequests/>}/>
                 <Route path='users' element={<UsersList/>}/>
             </Routes>

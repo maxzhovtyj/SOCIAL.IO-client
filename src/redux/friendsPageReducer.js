@@ -12,8 +12,10 @@ const GET_ALL_USERS = 'GET_ALL_USERS'
 export const friendsPageReducer = (state = friendsPageDefaultState, action) => {
 
     switch (action.type) {
+        case GET_FRIENDSHIP_REQUESTS:
+            return {...state, friendsRequests: [...action.payload]}
         case SEND_FRIENDSHIP_REQUEST:
-            return {...state, friendsRequests: [...state.friendsRequests, action.payload]}
+            return {...state}
         case ACCEPT_FRIENDSHIP_REQUEST:
             return {...state, friends: [...state.friends, action.payload]}
         case GET_ALL_USERS:

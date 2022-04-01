@@ -16,35 +16,42 @@ export const fetchUserInfo = (userIdParam) => {
 
 export const fetchUserPosts = (userIdParam) => {
     return async (dispatch) => {
-        const response = await axios.get(`/auth/userPosts?id=${userIdParam}`)
+        const response = await axios.get(`/api/userPosts?id=${userIdParam}`)
         dispatch(getUserPostsActionCreator(response.data))
     }
 }
 
 export const fetchNewUserPost = (data) => {
     return async (dispatch) => {
-        const response = await axios.post('/auth/newPost', data)
+        const response = await axios.post('/api/newPost', data)
         dispatch(addNewPostActionCreator(data))
     }
 }
 
 export const fetchAllPosts = () => {
     return async (dispatch) => {
-        const response = await axios.get('/auth/posts')
+        const response = await axios.get('/api/posts')
         dispatch(getAllPostsActionCreator(response.data))
     }
 }
 
 export const fetchAllUsersInfo = () => {
     return async (dispatch) => {
-        const response = await axios.get('/api/allUsersInfo')
+        const response = await axios.get('/api/users')
         dispatch(getAllUsersInfoActionCreator(response.data))
     }
 }
 
-export const fetchGetFriendshipRequests = () => {
+export const fetchGetFriends = (userId) => {
     return async (dispatch) => {
-        const response = await axios.get('/api/friendshipRequests')
+        const response = await axios.get(`/api/friends?id=${userId}`)
+        dispatch(getAllUsersInfoActionCreator(response.data))
+    }
+}
+
+export const fetchGetFriendshipRequests = (userId) => {
+    return async (dispatch) => {
+        const response = await axios.get(`/api/friendshipRequests?id=${userId}`)
         dispatch(getFriendshipRequestsActionCreator(response.data))
     }
 }
@@ -52,6 +59,13 @@ export const fetchGetFriendshipRequests = () => {
 export const fetchSendFriendshipRequest = (data) => {
     return async (dispatch) => {
         const response = await axios.post(`/api/users?id=${data.requestId}`, data.myId)
+        dispatch(sendFriendshipRequestActionCreator())
+    }
+}
+
+export const fetchAcceptFriendshipRequest = (data) => {
+    return async (dispatch) => {
+        const response = await axios.post(`/api/acceptFriendshipRequest`, data)
         dispatch(sendFriendshipRequestActionCreator())
     }
 }

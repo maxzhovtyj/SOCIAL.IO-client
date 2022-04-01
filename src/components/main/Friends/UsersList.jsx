@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {fetchAllUsers, fetchAllUsersInfo} from "../../../redux/asyncFetch";
+import {fetchAllUsersInfo} from "../../../redux/asyncFetch";
 
 import classes from './UsersList.module.css'
 import BasicCard from "../../../UI/BasicCard";

@@ -1,13 +1,16 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {NavLink} from "react-router-dom";
+import {useEffect} from "react";
 
-export default function BasicCard({userInfo}) {
+export default function BasicCard({acceptFriendshipHandler, setId, userInfo, accept = false}) {
+    useEffect(() => {
+        if(accept) setId(userInfo.userId)
+    }, [])
     return (
         <Card sx={{ minWidth: 275, maxWidth: 400 }}>
             <CardContent>
@@ -23,10 +26,11 @@ export default function BasicCard({userInfo}) {
                     {userInfo.hobbies}
                 </Typography>
             </CardContent>
-            <CardActions>
+            <CardActions style={{display: "flex", justifyContent: "space-between"}}>
                 <Button size="small">
                     <NavLink to={`/profile/${userInfo.userId}`}>Go to profile</NavLink>
                 </Button>
+                {accept ? <Button onClick={acceptFriendshipHandler} size="small">Accept</Button> : ''}
             </CardActions>
         </Card>
     );
