@@ -1,0 +1,10 @@
+.navWrapper {
+    color: grey;
+    display: flex;
+    justify-content: flex-start;
+    gap: .5rem;
+}
+
+NavLink:hover {
+    color: black;
+}

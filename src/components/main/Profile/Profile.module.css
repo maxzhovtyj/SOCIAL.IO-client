@@ -1,10 +1,5 @@
 .profileWrapper {
-    width: 70vw;
-}
-
-.postsWrapper {
-    display: flex;
-    flex-direction: column-reverse;
+    width: 40vw;
 }
 
 .inputNewPost{

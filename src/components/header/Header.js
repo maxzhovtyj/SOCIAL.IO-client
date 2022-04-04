@@ -13,15 +13,17 @@ function Header() {
                         Social.io
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink to="/about">About</NavLink>
-                </li>
-                <li>
-                    <NavLink to="/links">Links</NavLink>
-                </li>
-                <li>
-                    <NavLink to={`/profile/${auth.userId}`}>Profile</NavLink>
-                </li>
+                <div className={s.links}>
+                    <li>
+                        <NavLink to="/about">About</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/links">Links</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={`/profile/${auth.userId}`}>Profile</NavLink>
+                    </li>
+                </div>
             </ul>
         </nav>
     );

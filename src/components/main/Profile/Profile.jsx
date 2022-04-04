@@ -2,19 +2,20 @@ import React from 'react';
 
 import classes from './Profile.module.css'
 
-import Post from "../Post";
+import Post from "../../../UI/Posts/Post";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {Button} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import TextArea from "../../../UI/TetxArea";
+import PostsList from "../../../UI/Posts/PostsList";
 
-const Profile = ({isOwner, userPosts, userInfo, newPost, setNewPost, addNewPost}) => {
+const Profile = ({sendFriendshipRequestHandler, isOwner, isFriend, userPosts, userInfo, newPost, setNewPost, addNewPost}) => {
     const newPostHandler = (event) => {
         setNewPost(event.target.value)
     }
     return (
         <div className={classes.profileWrapper}>
-            <ProfileInfo profileInfo={userInfo}/>
+            <ProfileInfo profileInfo={userInfo} isOwner={isOwner} isFriend={isFriend} sendFriendshipRequestHandler={sendFriendshipRequestHandler}/>
 
             {
                 isOwner
@@ -28,10 +29,7 @@ const Profile = ({isOwner, userPosts, userInfo, newPost, setNewPost, addNewPost}
 
             {
                 userPosts.length !== 0
-                    ?
-                    <div className={classes.postsWrapper}>
-                        {userPosts.map((post, index) => <Post key={index} postInfo={post}/>)}
-                    </div>
+                    ? <PostsList postsList={userPosts}/>
                     : "This user has not posts yet"
             }
         </div>

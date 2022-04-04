@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Routes, useParams} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 
 import Header from "./components/header/Header";
 import Sidebar from "./components/sidebar/Sidebar";
@@ -10,24 +10,24 @@ import Settings from "./components/main/Settings/Settings";
 import SingIn from "./components/auth/SingIn";
 import SingUp from "./components/auth/SingUp";
 import ProfileContainer from "./components/main/Profile/ProfileContainer";
+import Layout from "./components/Layout";
 
 export const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
         return (
-            <div className="App">
-                <Header/>
-                <Sidebar/>
+            <>
                 <Routes>
-                    <Route path='/' element={<News/>}/>
-                    <Route path='/dialogs' element={<Dialogs/>}/>
-                    <Route path='/friends' element={<Friends/>}/>
-                    <Route path='/profile/:id' element={<ProfileContainer/>}/>
-                    <Route path='/settings' element={<Settings/>}/>
+                    <Route path="/" element={<Layout/>}>
+                        <Route index element={<News/>}/>
+                        <Route path='/dialogs' element={<Dialogs/>}/>
+                        <Route path='/friends/*' element={<Friends/>}/>
+                        <Route path='/profile/:id' element={<ProfileContainer/>}/>
+                        <Route path='/settings' element={<Settings/>}/>
+                    </Route>
                 </Routes>
-            </div>
+            </>
         );
-    }
-    else {
+    } else {
         return (
             <Routes>
                 <Route path="/" element={<SingIn/>}/>

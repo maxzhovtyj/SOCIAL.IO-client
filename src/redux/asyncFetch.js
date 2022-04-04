@@ -1,26 +1,17 @@
 import axios from "axios";
-import {addNewPostActionCreator, getUserInfoActionCreator, getUserPostsActionCreator} from "./profilePageReducer";
-
+import {getUserInfoActionCreator} from "./ProfilePageRedux/profilePageReducer";
+import {getAllUsersInfoActionCreator,} from "./FriendsPageRedux/friendsPageReducer";
+// todo error handler
 export const fetchUserInfo = (userIdParam) => {
     return async (dispatch) => {
-        const response = await axios.get(`/auth/userInfo?id=${userIdParam}`)
-        console.log(response.data)
+        const response = await axios.get(`/api/userInfo?id=${userIdParam}`)
         dispatch(getUserInfoActionCreator(response.data))
     }
 }
 
-export const fetchUserPosts = (userIdParam) => {
+export const fetchAllUsersInfo = () => {
     return async (dispatch) => {
-        const response = await axios.get(`/auth/userPosts?id=${userIdParam}`)
-        console.log(response.data)
-        dispatch(getUserPostsActionCreator(response.data))
-    }
-}
-
-export const fetchNewUserPost = (data) => {
-    return async (dispatch) => {
-        const response = await axios.post('/auth/newPost', data)
-        console.log(response.data)
-        dispatch(addNewPostActionCreator(data))
+        const response = await axios.get('/api/users')
+        dispatch(getAllUsersInfoActionCreator(response.data))
     }
 }
