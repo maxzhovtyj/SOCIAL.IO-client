@@ -51,7 +51,7 @@ function Sidebar(props) {
                 </li>
             </ul>
         </nav>
-        <Button className={classes.muiButton} onClick={clickHandler} variant="outlined" size="small">Logout</Button>
+        <Button style={{margin: '.5rem 0 0 8px'}} onClick={clickHandler} variant="outlined" size="small">Logout</Button>
     </div>;
 }
 

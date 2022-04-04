@@ -8,12 +8,14 @@
   "f f";
     grid-template-rows: 1fr;
     grid-template-columns: 4fr 14fr;
+
     grid-gap: 1rem;
     position: relative;
 }
 
 .wrapper {
     padding-right: 15px;
+    position: relative;
 }
 
 @media (max-width: 375px) {

@@ -2,9 +2,10 @@
     font-size: 1rem;
     border-radius: 15px;
     grid-area: s;
-    position: relative;
     min-height: 500px;
     margin-left: 15px;
+    position: sticky;
+    left: 0;
 }
 
 .sidebar > nav {}
@@ -40,10 +41,6 @@ a > span {
 .sidebarList > li:hover {
     background-color: rgba(150, 150, 150, 0.55);
     transition: .3s ease-in-out;
-}
-
-.muiButton {
-    margin: .5rem 0 0 8px;
 }
 
 @media (max-width: 375px) {
