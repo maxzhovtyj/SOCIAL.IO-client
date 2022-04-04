@@ -1,9 +1,9 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 
-import {dialogsPageReducer} from "./dialogsPageReducer";
-import {profilePageReducer} from "./profilePageReducer";
-import {newsPageReducer} from "./newsPageReducer";
-import {friendsPageReducer} from "./friendsPageReducer";
+import {dialogsPageReducer} from "./DialogsPageRedux/dialogsPageReducer";
+import {profilePageReducer} from "./ProfilePageRedux/profilePageReducer";
+import {newsPageReducer} from "./NewsPageRedux/newsPageReducer";
+import {friendsPageReducer} from "./FriendsPageRedux/friendsPageReducer";
 
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";

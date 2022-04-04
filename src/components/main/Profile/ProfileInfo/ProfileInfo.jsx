@@ -1,5 +1,5 @@
 import React from 'react';
-import {Avatar} from "@mui/material";
+import {Avatar, Button} from "@mui/material";
 
 const profileWrapper = {
     display: "grid",
@@ -11,7 +11,7 @@ const infoStyles = {
     width: "60vw"
 }
 
-const ProfileInfo = ({profileInfo: {nameSurname, description, age, hobbies}}) => {
+const ProfileInfo = ({sendFriendshipRequestHandler, isOwner, isFriend, profileInfo: {nameSurname, description, age, hobbies}}) => {
     return (
         <div style={profileWrapper}>
             <Avatar style={{backgroundColor: "white"}} sx={{width: 100, height: 100}} alt="userImg"
@@ -23,6 +23,11 @@ const ProfileInfo = ({profileInfo: {nameSurname, description, age, hobbies}}) =>
                     <p>{description}</p>
                     <p>{hobbies}</p>
                 </div>
+                {
+                    isOwner || isFriend
+                        ? ''
+                        : <Button onClick={sendFriendshipRequestHandler} variant="contained" size={"small"}>Add to friends</Button>
+                }
             </div>
         </div>
     );

@@ -7,7 +7,7 @@ import SendIcon from '@mui/icons-material/Send';
 
 import classes from './Dialogs.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {sendMessageActionCreator} from "../../../redux/dialogsPageReducer";
+import {sendMessageActionCreator} from "../../../redux/DialogsPageRedux/dialogsPageReducer";
 
 const Dialogs = () => {
     const dispatch = useDispatch()

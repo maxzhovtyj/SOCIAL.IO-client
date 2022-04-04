@@ -9,13 +9,13 @@ import SendIcon from '@mui/icons-material/Send';
 import TextArea from "../../../UI/TetxArea";
 import PostsList from "../../../UI/Posts/PostsList";
 
-const Profile = ({isOwner, userPosts, userInfo, newPost, setNewPost, addNewPost}) => {
+const Profile = ({sendFriendshipRequestHandler, isOwner, isFriend, userPosts, userInfo, newPost, setNewPost, addNewPost}) => {
     const newPostHandler = (event) => {
         setNewPost(event.target.value)
     }
     return (
         <div className={classes.profileWrapper}>
-            <ProfileInfo profileInfo={userInfo}/>
+            <ProfileInfo profileInfo={userInfo} isOwner={isOwner} isFriend={isFriend} sendFriendshipRequestHandler={sendFriendshipRequestHandler}/>
 
             {
                 isOwner

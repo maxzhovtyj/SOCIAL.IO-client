@@ -7,12 +7,12 @@ import Typography from '@mui/material/Typography';
 import {NavLink} from "react-router-dom";
 import {useEffect} from "react";
 
-export default function BasicCard({acceptFriendshipHandler, setId, userInfo, accept = false}) {
+export default function UserCard({acceptFriendshipHandler, setId, userInfo, accept = false}) {
     useEffect(() => {
         if(accept) setId(userInfo.userId)
-    }, [])
+    }, [accept, setId, userInfo.userId])
     return (
-        <Card sx={{ minWidth: 275, maxWidth: 400 }}>
+        <Card sx={{ minWidth: 200, maxWidth: 300, minHeight: 300, maxHeight: 300, display: 'grid', gridTemplateRows: "10fr 2fr" }}>
             <CardContent>
                 <Typography variant="h5" component="div">
                     {userInfo.nameSurname}

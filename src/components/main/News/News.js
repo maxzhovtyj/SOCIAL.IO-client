@@ -1,8 +1,8 @@
 import "../../../UI/Posts/Post.module.css";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {fetchAllPosts} from "../../../redux/asyncFetch";
 import PostsList from "../../../UI/Posts/PostsList";
+import {fetchAllPosts} from "../../../redux/NewsPageRedux/newsPageFetch";
 
 function News() {
     const dispatch = useDispatch()

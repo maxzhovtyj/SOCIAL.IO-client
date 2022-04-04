@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
+import {AuthContext} from "../../../context/AuthContext";
+import UserCard from "../../../UI/UserCard";
 import {
     fetchAcceptFriendshipRequest,
-    fetchGetFriendshipRequests,
-    fetchSendFriendshipRequest
-} from "../../../redux/asyncFetch";
-import {AuthContext} from "../../../context/AuthContext";
-import BasicCard from "../../../UI/BasicCard";
+    fetchGetFriendshipRequests
+} from "../../../redux/FriendsPageRedux/friendsPageFetch";
+import UsersList from "../../../UI/UsersList/UsersList";
 
 const FriendshipRequests = () => {
     const [friendId, setFriendId] = useState(null)
@@ -15,7 +15,7 @@ const FriendshipRequests = () => {
     const requests = useSelector(state => state.friends.friendsRequests)
     useEffect(() => {
         dispatch(fetchGetFriendshipRequests(auth.userId))
-    }, [auth.userId, dispatch])
+    }, [auth.userId, requests, dispatch])
 
     const acceptFriendshipHandler = () => {
         let data = {
@@ -27,13 +27,8 @@ const FriendshipRequests = () => {
 
     return (
         <div>
-            {(requests.length)
-                ? requests.map((user => <BasicCard key={user.userId}
-                                                   userInfo={user}
-                                                   accept={true}
-                                                   acceptFriendshipHandler={acceptFriendshipHandler}
-                                                   setId={setFriendId}/>))
-                : "No friendship requests yet"}
+            <UsersList list={requests} errorMessage={"No friendship requests yet"} setId={setFriendId} accept={true}
+                       acceptFriendshipHandler={acceptFriendshipHandler}/>
         </div>
     );
 };
